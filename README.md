@@ -297,4 +297,39 @@ The Firefox script has successfully run, and Firefox was removed from the VM.
 <img src="https://i.imgur.com/weIOfCf.png" height="80%" width="80%" alt="Agent Group created"/>
 <br />
 
-The SMB script was successfuly run
+The SMB script was successfully run.
+
+<h3> Now I'm going to run the script that disables the insecure cryptographic protocols. </h3>
+
+<img src="https://i.imgur.com/E9Py9ND.png" height="80%" width="80%" alt="Agent Group created"/>
+<br />
+
+This script was successfully run as well. As you can see 
+- SSL 2.0 has been disabled.
+- SSL 3.0 has been disabled.
+- TLS 1.0 has been disabled.
+- TLS 1.1 has been disabled. 
+
+Alternatively, if any of these did not work, I also had a batch file on standby
+```powershell
+powershell -ExecutionPolicy Bypass -File ".\remediation-FireFox-uninstall.ps1"
+powershell -ExecutionPolicy Bypass -File ".\remediation-SMBv1.ps1"
+powershell -ExecutionPolicy Bypass -File ".\toggle-protocols.ps1"
+```
+<h3> Now, before I rerun the scan, I'm going to check and see if there are any manual updates in settings I should do.</h3>
+
+There were 2 security updates, so I made sure to update the VM. Now I'm going to restart the computer so the changes I made can take effect, and then I will re-run the scan.
+
+<H2> The scan is complete, and the results have shown a significant drop in vulnerabilities. </H2>
+
+<img src="https://i.imgur.com/oH9Onu0.png" height="80%" width="80%" alt="Agent Group created"/>
+<br />
+
+The vulnerability findings dropped from:
+
+- 48 to 0 Critical
+- 15 to 3 High
+- 10 to 6 Medium
+- 3 to 2 low
+
+<h3> All of the vulnerabilities I added have now been remediated. I will include an additional copy of the new scans. </h3>
